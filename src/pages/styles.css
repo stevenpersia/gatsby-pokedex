@@ -1,0 +1,16 @@
+.pokemons {
+  display: grid;
+  grid-gap: 10px;
+  grid: auto / repeat(5, 1fr);
+}
+
+.pokemon {
+  border: 1px solid #000;
+  border-radius: 3px;
+  padding: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
