@@ -14,16 +14,28 @@ const IndexPage = () => (
       <StaticQuery
         query={query}
         render={data =>
-          data.dataJson.pokemons.map(pokemon => (
-            <Link to="">
-              <div className="pokemon">
-                <img src={pokemon.image} alt={pokemon.name} />
-                {pokemon.name}
-                <div className="number">#{pokemon.number}</div>
-                <div className="type">{pokemon.attacks.special[0].type}</div>
-              </div>
-            </Link>
-          ))
+          data.dataJson.pokemons.map(pokemon => {
+            const { image, name, number } = pokemon
+            return (
+              <Link to="/pokemon" state={{ name: name }}>
+                <div className="pokemon">
+                  <img
+                    src={image && image.childImageSharp.fluid.src}
+                    alt={name}
+                  />
+                  <span className="name">{name}</span>
+                  <span className="number">#{number}</span>
+                  <div className="type-container">
+                    <span
+                      className={`type ${pokemon.attacks.special[0].type.toLowerCase()}`}
+                    >
+                      {pokemon.attacks.special[0].type}
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            )
+          })
         }
       />
     </div>
@@ -38,37 +50,16 @@ const query = graphql`
       pokemons {
         number
         name
-        attacks {
-          fast {
-            name
-            type
-            damage
-          }
-          special {
-            name
-            type
-            damage
+        image {
+          childImageSharp {
+            fluid {
+              src
+            }
           }
         }
-        evolutions {
-          id
-          number
-          name
-          weight {
-            minimum
-            maximum
-          }
-          attacks {
-            fast {
-              name
-              type
-              damage
-            }
-            special {
-              name
-              type
-              damage
-            }
+        attacks {
+          special {
+            type
           }
         }
       }
