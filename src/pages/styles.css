@@ -12,13 +12,18 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-.pokemons {
+/* VIEW POKEMON */
+.pokemon {
   display: grid;
   grid-gap: 20px;
-  grid: auto / repeat(5, 1fr);
+  grid: auto / repeat(3, 1fr);
 }
 
-.pokemon {
+.pokemon > a:nth-child(1) {
+  grid-area: 1 / 1 / 1 / -1;
+}
+
+.pokemon .pokemon-card {
   display: grid;
   grid: auto / repeat(8, 1fr);
   justify-content: center;
@@ -31,12 +36,32 @@ body {
   box-shadow: 0px 0px 6px 1px rgba(66, 66, 66, 0.11);
 }
 
-.pokemon:hover {
+/* ALL POKEMONS */
+.pokemons {
+  display: grid;
+  grid-gap: 20px;
+  grid: auto / repeat(5, 1fr);
+}
+
+.pokemons .pokemon-card {
+  display: grid;
+  grid: auto / repeat(8, 1fr);
+  justify-content: center;
+  text-align: center;
+  border-radius: 3px;
+  padding: 10px;
+  background: #fff;
+  -webkit-box-shadow: 0px 0px 6px 1px rgba(66, 66, 66, 0.11);
+  -moz-box-shadow: 0px 0px 6px 1px rgba(66, 66, 66, 0.11);
+  box-shadow: 0px 0px 6px 1px rgba(66, 66, 66, 0.11);
+}
+
+.pokemons .pokemon-card :hover {
   background: #fff;
   box-shadow: 0 0 0 0;
 }
 
-.pokemon img {
+.pokemon-card img {
   grid-area: 1 / 1 / -1 / -1;
   justify-self: center;
   width: 80px;
@@ -45,22 +70,25 @@ body {
   padding: 0;
 }
 
-.pokemon .name {
+.pokemon-card .name {
   display: block;
   grid-area: 2 / -1 / 2 / 1;
 }
 
-.pokemon .number {
+.pokemon-card .number {
   color: #dfdfdf;
   font-weight: 800;
   display: block;
   grid-area: 3 / -1 / 3 / 1;
 }
 
-.pokemon .type-container {
+.pokemon-card .type-container {
   grid-area: 4 / -1 / 4 / 1;
 }
 
+/* POKEMON TYPE */
+
+.pokemon-card .type,
 .pokemon .type {
   font-family: "VT323", monospace;
   border-radius: 3px;
@@ -71,71 +99,71 @@ body {
   text-shadow: 1px 1px 0px #424242;
 }
 
-.pokemon .type.flying {
+.type.flying {
   background: #a890f0;
-  border-bottom: 1px solid #8874c4;
+  border-bottom: 1px solid #7765ac;
 }
-.pokemon .type.grass {
+.type.grass {
   background: #78c850;
   border-bottom: 1px solid #558f37;
 }
-.pokemon .type.fire {
+.type.fire {
   background: #e47a2c;
-  border-bottom: 1px solid #e47a2c;
+  border-bottom: 1px solid #af5b20;
 }
-.pokemon .type.poison {
+.type.poison {
   background: #a040a0;
-  border-bottom: 1px solid #a040a0;
+  border-bottom: 1px solid #692869;
 }
-.pokemon .type.normal {
+.type.normal {
   background: #a8a878;
-  border-bottom: 1px solid #a8a878;
+  border-bottom: 1px solid #6d6d4d;
 }
-.pokemon .type.ground {
+.type.ground {
   background: #e0c068;
-  border-bottom: 1px solid #e0c068;
+  border-bottom: 1px solid #a38b4a;
 }
-.pokemon .type.dark {
+.type.dark {
   background: #705848;
-  border-bottom: 1px solid #705848;
+  border-bottom: 1px solid #42342a;
 }
-.pokemon .type.steel {
+.type.steel {
   background: #b8b8d0;
-  border-bottom: 1px solid #b8b8d0;
+  border-bottom: 1px solid #7b7b8d;
 }
-.pokemon .type.electric {
+.type.electric {
   background: #f8d030;
-  border-bottom: 1px solid #f8d030;
+  border-bottom: 1px solid #a0861f;
 }
-.pokemon .type.fighting {
+.type.fighting {
   background: #c03028;
-  border-bottom: 1px solid #c03028;
+  border-bottom: 1px solid #7a1d18;
 }
-.pokemon .type.dragon {
+.type.dragon {
   background: #7038f8;
-  border-bottom: 1px solid #7038f8;
+  border-bottom: 1px solid #4e24ad;
 }
-.pokemon .type.water {
+.type.water {
   background: #6890f0;
-  border-bottom: 1px solid #6890f0;
+  border-bottom: 1px solid #4763a7;
 }
-.pokemon .type.rock {
+.type.rock {
   background: #b8a038;
-  border-bottom: 1px solid #b8a038;
+  border-bottom: 1px solid #756622;
 }
-.pokemon .type.bug {
+.type.bug {
   background: #a8b820;
-  border-bottom: 1px solid #a8b820;
+  border-bottom: 1px solid #707a13;
 }
-.pokemon .type.fairy {
+.type.fairy {
   background: #dba3df;
-  border-bottom: 1px solid #dba3df;
+  border-bottom: 1px solid #936d96;
 }
-.pokemon .type.ice {
+.type.ice {
   background: #98d8d8;
-  border-bottom: 1px solid #98d8d8;
+  border-bottom: 1px solid #5f8a8a;
 }
-.pokemon .type.psychic {
+.type.psychic {
   background: #f85888;
-  border-bottom: 1px solid #f85888;
+  border-bottom: 1px solid #92314e;
 }

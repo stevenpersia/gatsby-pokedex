@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 import "./styles.css"
+import PokemonCard from "../components/PokemonCard"
 
 const IndexPage = () => (
   <Layout>
@@ -14,28 +15,9 @@ const IndexPage = () => (
       <StaticQuery
         query={query}
         render={data =>
-          data.dataJson.pokemons.map(pokemon => {
-            const { image, name, number } = pokemon
-            return (
-              <Link to="/pokemon" state={{ name: name }}>
-                <div className="pokemon">
-                  <img
-                    src={image && image.childImageSharp.fluid.src}
-                    alt={name}
-                  />
-                  <span className="name">{name}</span>
-                  <span className="number">#{number}</span>
-                  <div className="type-container">
-                    <span
-                      className={`type ${pokemon.attacks.special[0].type.toLowerCase()}`}
-                    >
-                      {pokemon.attacks.special[0].type}
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            )
-          })
+          data.dataJson.pokemons.map(pokemon => (
+            <PokemonCard pokemon={pokemon} />
+          ))
         }
       />
     </div>
@@ -48,6 +30,7 @@ const query = graphql`
   query {
     dataJson {
       pokemons {
+        id
         number
         name
         image {
@@ -58,8 +41,44 @@ const query = graphql`
           }
         }
         attacks {
-          special {
+          fast {
+            name
             type
+            damage
+          }
+          special {
+            name
+            type
+            damage
+          }
+        }
+        evolutions {
+          image {
+            childImageSharp {
+              fluid {
+                src
+              }
+            }
+          }
+
+          id
+          number
+          name
+          weight {
+            minimum
+            maximum
+          }
+          attacks {
+            fast {
+              name
+              type
+              damage
+            }
+            special {
+              name
+              type
+              damage
+            }
           }
         }
       }

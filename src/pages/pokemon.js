@@ -1,69 +1,47 @@
 import React from "react"
-import { Link, StaticQuery, graphql } from "gatsby"
+import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import PokemonCard from "../components/PokemonCard"
 
 const Pokemon = ({ location }) => (
   <Layout>
-    <SEO title={location.state.name} />
-    <StaticQuery
-      query={query}
-      render={data => (
-        <div className="pokemon">
-          <img src={data.image} alt={data.name} />
-          {data.name}
-          <div className="number">#{data.number}</div>
-          <div className="type">{data.attacks.special[0].type}</div>
-        </div>
-      )}
-    />
+    <SEO title={location.state.pokemon.name} />
+    <div className="pokemon">
+      <PokemonCard pokemon={location.state.pokemon} />
+      {location.state.pokemon.evolutions &&
+        location.state.pokemon.evolutions.map(evolution => (
+          <PokemonCard pokemon={evolution} evolution />
+        ))}
+      Fast attacks :
+      {location.state.pokemon.attacks.fast.map(attack => {
+        return (
+          <p>
+            {attack.name}{" "}
+            <span className={`type ${attack.type.toLowerCase()}`}>
+              {attack.type}
+            </span>{" "}
+            {attack.damage}
+          </p>
+        )
+      })}
+      Special attacks :
+      {location.state.pokemon.attacks.special.map(attack => {
+        return (
+          <p>
+            {attack.name}{" "}
+            <span className={`type ${attack.type.toLowerCase()}`}>
+              {attack.type}
+            </span>{" "}
+            {attack.damage}
+          </p>
+        )
+      })}
+    </div>
+
     <Link to="/">Go back to the homepage</Link>
   </Layout>
 )
-
-const query = graphql`
-  query {
-    dataJson {
-      pokemons {
-        number
-        name
-        attacks {
-          fast {
-            name
-            type
-            damage
-          }
-          special {
-            name
-            type
-            damage
-          }
-        }
-        evolutions {
-          id
-          number
-          name
-          weight {
-            minimum
-            maximum
-          }
-          attacks {
-            fast {
-              name
-              type
-              damage
-            }
-            special {
-              name
-              type
-              damage
-            }
-          }
-        }
-      }
-    }
-  }
-`
 
 export default Pokemon
