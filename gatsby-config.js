@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `POKEDEX GENERATION 1`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `POKEDEX`,
+    description: `Generation 1`,
+    author: `Steven Persia`,
   },
   plugins: [
     `gatsby-transformer-json`,
