@@ -1993,7 +1993,7 @@
       "id": "UG9rZW1vbjowMjk=",
       "number": "029",
       "name": "Nidoran-F",
-      "image": "../images/nidoran-f.png",
+      "image": "../images/nidoranf.png",
       "attacks": {
         "fast": [
           {
@@ -2232,7 +2232,7 @@
       "id": "UG9rZW1vbjowMzI=",
       "number": "032",
       "name": "Nidoran-M",
-      "image": "../images/nidoran-m.png",
+      "image": "../images/nidoranm.png",
       "attacks": {
         "fast": [
           {
@@ -7875,7 +7875,7 @@
       "id": "UG9rZW1vbjoxMjI=",
       "number": "122",
       "name": "Mr. Mime",
-      "image": "../images/mr-mime.png",
+      "image": "../images/mrmime.png",
       "attacks": {
         "fast": [
           {
